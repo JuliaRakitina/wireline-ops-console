@@ -2,6 +2,8 @@
 
 Wireline Operations Console is a modern clean-room reimplementation of a wireline acquisition and monitoring system originally designed, implemented, and field-tested by **Julia Rakitina in 2015–2016**. The supplied legacy code was authored by Julia and was used as behavioral and architectural reference. The new product is implemented in TypeScript and uses deterministic synthetic telemetry only.
 
+Julia's original product scope included operator-interface localization for English, Russian, and Azerbaijani. The archives contain translation catalogs and runtime language selection with a saved preference. This historical capability is credited in the portfolio; the current demo has an English interface and ships no legacy catalogs.
+
 According to Julia's supplied history, the foundational architecture later evolved to LabJack-based acquisition and modern tablet software and was commercialized in 2026. This credits the original architecture and field-tested implementation. It does not claim that Julia personally authored every later rewrite. The modern portfolio simulator is not connected to operating equipment.
 
 ## Handling the reference material

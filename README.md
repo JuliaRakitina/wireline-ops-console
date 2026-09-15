@@ -30,7 +30,7 @@ React · strict TypeScript · D3 · deterministic telemetry · tested operator w
 
 A downhole instrument moves through a borehole on a cable. A wireline operator needs to know where it is, how fast it is moving, how much load the cable carries, and whether those measurements remain trustworthy. Legacy wireline logging winch units often conveyed this through mechanical gauges.
 
-**Depth grows downward because the tool does.** Tension, differential tension, and speed use different horizontal scales but share the same vertical measured-depth axis. Reversing the cable revisits depths; a snag can change tension without changing depth. A time-series dashboard or a collection of gauges loses those relationships.
+**Depth grows downward because the tool does.** Tension, differential tension, and speed use different horizontal scales but share the same vertical measured-depth axis. Reversing the cable revisits depths; a snag can change tension without changing depth. Shared depth tracks keep those relationships visible alongside instantaneous instrument readings.
 
 Read Julia's account: [The chart that had to grow downward](https://dev.to/julia_rakitina/the-chart-that-had-to-grow-downward-20h3).
 
@@ -38,7 +38,9 @@ Read Julia's account: [The chart that had to grow downward](https://dev.to/julia
 
 Modern clean-room reimplementation of a wireline acquisition and monitoring system originally designed, implemented, and field-tested by **Julia Rakitina in 2015–2016**. The foundational architecture later evolved to LabJack-based acquisition and modern tablet software and was commercialized in 2026.
 
-Julia's foundational work covered sensor and acquisition hardware selection, encoder-derived depth and speed, tension measurement, magnetic markers, correction, safety alerts, calibration/settings, recording, review, and visualization. The original Arduino acquisition layer missed encoder pulses at high input rates in field tests. That exposed an acquisition bottleneck; the later hardware changed while the operating principles endured.
+Julia's foundational work covered sensor and acquisition hardware selection, encoder-derived depth and speed, tension measurement, magnetic markers, correction, safety alerts, calibration/settings, recording, review, visualization, and operator-interface localization. The original Arduino acquisition layer missed encoder pulses at high input rates in field tests. That exposed an acquisition bottleneck; the later hardware changed while the operating principles endured.
+
+The original operator interface combined a large, configurable line-tension needle gauge with depth-indexed tracks and English, Russian, and Azerbaijani localization, including a saved language preference. The new portfolio interface is English and emphasizes depth tracks with compact live readings; the [legacy behavior map](docs/legacy-behavior-map.md) documents these historical capabilities.
 
 This account credits the original system and architecture. It does **not** attribute every subsequent production rewrite to Julia. The present simulator is not connected to operating equipment. Historical inclinometry work was a visualization/planning prototype; physical instrument integration did not reach the field-complete state of the core depth/tension system.
 

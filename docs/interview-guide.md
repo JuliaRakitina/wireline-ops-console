@@ -6,7 +6,7 @@
 
 “This is a modern reimplementation of a wireline monitoring system I originally designed, implemented, and field-tested in 2015–2016. A logging unit lowers a downhole instrument on a cable and retrieves it. The operator needs to know where the tool is, how quickly the cable is moving, what load the cable carries, and whether those signals are trustworthy.
 
-“My original scope crossed the hardware/software boundary: sensor selection and acquisition, encoder-derived depth and speed, tension, magnetic depth markers, calibration, operator alerts, recording, and visualization. This version is a local synthetic demonstrator of those relationships.”
+“My original scope crossed the hardware/software boundary: sensor selection and acquisition, encoder-derived depth and speed, tension, magnetic depth markers, calibration, operator alerts, recording, visualization, and an operator interface in English, Russian, and Azerbaijani. This version is a local synthetic demonstrator of those relationships.”
 
 ### 0:45–1:40 — The chart is a domain model
 

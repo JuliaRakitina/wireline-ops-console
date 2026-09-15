@@ -32,6 +32,10 @@ Warm off-white canvas, white plotting paper, dark forest chrome, moss/lime accen
 
 Typed depth chart owns its D3 subtree; React owns composition and controls. Shared buttons, state badges, panel headings, field labels, metric cells, and event rows. Styles and design tokens live in src/styles.css; visualization styles may remain in dedicated CSS. States include idle, connecting, running, paused, stopped, replay, degraded, warning, and critical.
 
+### Instantaneous load and depth history
+
+The original operator interface included a large needle indicator for absolute line tension, with configurable scale, units, and threshold zones; Julia recalls its central placement. A prominent dial can serve sustained load monitoring, while the depth tracks serve inspection of load, motion, and events together. The current default gives the tracks most of the screen and retains precise live tension, units, and thresholds above them. An optional enlarged load-monitoring view is a possible extension; it is not implemented. Such a view should keep the numeric reading, explicit threshold labels, signal quality, and active alerts visible alongside the needle, with differential tension remaining a separate signed reading.
+
 ## Accessibility
 
 Target WCAG AA contrast, visible keyboard focus, semantic navigation and controls. All important numbers and alert explanations available as text. Chart has keyboard inspection and explicit zoom/history buttons. Alert acknowledgment never hides the active condition. Sound opt-in with visual equivalent. No hover-only safety information.

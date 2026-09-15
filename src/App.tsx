@@ -194,9 +194,10 @@ export default function App() {
             <div className="story-line">
               <strong>02 / The foundational system</strong>
               <p>
-                Julia's work covered sensors, acquisition, calibration, monitoring, recording, and
-                visualization. Field tests exposed missed encoder pulses at high rates in the
-                original Arduino acquisition layer.
+                Julia's work covered sensors, acquisition, calibration, monitoring, recording,
+                visualization, and an operator interface in English, Russian, and Azerbaijani. Field
+                tests exposed missed encoder pulses at high rates in the original Arduino
+                acquisition layer.
               </p>
             </div>
             <div className="story-line">
