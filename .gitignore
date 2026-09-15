@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.vite/
+coverage/
+playwright-report/
+test-results/
+.env*
+!.env.example
+.DS_Store
+*.zip
+*.tar.gz
+*.db
+*.sqlite*
+*.pem
+*.key
+reference/
+legacy/

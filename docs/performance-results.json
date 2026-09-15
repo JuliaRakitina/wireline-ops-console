@@ -1,0 +1,17 @@
+{
+  "date": "2026-09-16",
+  "browser": "Chromium",
+  "viewport": "1440×900",
+  "durationSeconds": 60.3,
+  "initial": {
+    "nodes": 552,
+    "heap": 29400000
+  },
+  "final": {
+    "nodes": 558,
+    "heap": 29400000
+  },
+  "interactionPairMilliseconds": [89, 72, 49, 81],
+  "pageErrors": 0,
+  "recording": "Recording locally\n· 603 samples · 20 Hz acquisition / 5 Hz display\nSave run\nReview & export →"
+}
