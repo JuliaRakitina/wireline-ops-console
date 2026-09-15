@@ -65,7 +65,7 @@ export class ConsoleStore {
   private preview() {
     for (let i = 0; i < 1200; i++) {
       const sample = this.simulator.step(0.05);
-      if (i % 4 === 0) this.acquisition.push(sample);
+      if ((i + 1) % 4 === 0) this.acquisition.push(sample);
       this.events.push(...this.simulator.drainEvents());
     }
     this.events = this.events.slice(-500);

@@ -293,3 +293,9 @@ describe('operator store acquisition and workflow integration', () => {
     expect(vi.mocked(saveRun).mock.calls.length).toBeGreaterThan(150);
   }, 15_000);
 });
+
+it('initial preview metrics and final plotted sample describe the same acquisition', () => {
+  const store = new ConsoleStore();
+  expect(store.getSnapshot().samples.at(-1)).toEqual(store.getSnapshot().sample);
+  store.dispose();
+});
