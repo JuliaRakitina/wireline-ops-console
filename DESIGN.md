@@ -18,7 +18,7 @@ Wireline operator: monitor motion and load, inspect history without losing place
 
 ## Information architecture
 
-Persistent compact navigation; page title and synthetic-run identity; live state and primary controls; four measurement readouts; large depth tracks; well and alert sidebar. Review, profile, and settings stay one click away.
+Persistent compact navigation; page title and synthetic-run identity; live state and primary controls; a central line-tension needle gauge between depth/speed and signed differential tension; large depth tracks; well and alert sidebar. Review, profile, and settings stay one click away.
 
 ## Design principles
 
@@ -34,7 +34,7 @@ Typed depth chart owns its D3 subtree; React owns composition and controls. Shar
 
 ### Instantaneous load and depth history
 
-The original operator interface included a large needle indicator for absolute line tension, with configurable scale, units, and threshold zones; Julia recalls its central placement. A prominent dial can serve sustained load monitoring, while the depth tracks serve inspection of load, motion, and events together. The current default gives the tracks most of the screen and retains precise live tension, units, and thresholds above them. An optional enlarged load-monitoring view is a possible extension; it is not implemented. Such a view should keep the numeric reading, explicit threshold labels, signal quality, and active alerts visible alongside the needle, with differential tension remaining a separate signed reading.
+The original operator interface included a large needle indicator for absolute line tension, with configurable scale, units, and threshold zones; Julia recalls its central placement and requested its inclusion in the modern main screen. A central needle gauge now provides immediate load monitoring above the depth tracks. Its exact numeric reading, units, warning/critical limits, and signal/last-reading state stay visible. The scale is derived from configured limits and stays fixed as samples arrive; readings outside its range retain their exact value and an explicit range message. Sudden tension loss stays critical even with a low needle angle. Differential tension remains a separate signed reading on the right, with its operator baseline and limits. On narrow screens, depth/speed share a row and the gauge and differential panel stack below.
 
 ## Accessibility
 

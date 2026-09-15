@@ -17,11 +17,11 @@ A separate Chromium run used real browser timers for **60.3 seconds** at **1440�
 
 | Observation                                            | Result               |
 | ------------------------------------------------------ | -------------------- |
-| DOM nodes, start → end                                 | 552 → 558            |
-| Inspect-history + Back-to-Live pair, four observations | 89 / 72 / 49 / 81 ms |
+| DOM nodes, start → end                                 | 596 → 602            |
+| Inspect-history + Back-to-Live pair, four observations | 67 / 60 / 64 / 66 ms |
 | Browser page errors                                    | 0                    |
 | Display samples at completion, including pre-roll      | 603                  |
-| Chromium reported JS heap, start → end                 | 29.4 MB → 29.4 MB    |
+| Chromium reported JS heap, start → end                 | 31.2 MB → 31.2 MB    |
 
 The heap API is coarse/quantized and includes the development runtime. These numbers establish a responsive short run on this development machine, not a cross-device latency guarantee or proof of no memory leak. The few additional DOM nodes represent visible marker/grid changes. Longer browser soak tests, mobile device profiling and a production transport are future verification work.
 
@@ -41,6 +41,7 @@ Playwright Chromium runs the real application and captures synthetic-only screen
 | Held viewport while live data continues | [History](screenshots/history-desktop.png)                                          |
 | Warning before critical                 | [Warning](screenshots/warning-desktop.png)                                          |
 | Stationary tool with critical overpull  | [Critical](screenshots/critical-desktop.png)                                        |
+| Low needle with critical loss of load   | [Loss of load](screenshots/loss-desktop.png)                                        |
 | Encoder loss and magnetic reference     | [Degraded](screenshots/degraded-desktop.png)                                        |
 | Geometry and thresholds applied         | [Configuration](screenshots/configuration-desktop.png)                              |
 | Time/depth playback and export          | [Review](screenshots/review-desktop.png)                                            |
@@ -49,6 +50,8 @@ Playwright Chromium runs the real application and captures synthetic-only screen
 | Narrow screen, 390×844                  | [Live](screenshots/live-mobile.png), [Profile](screenshots/well-profile-mobile.png) |
 
 Screenshots are full-page captures at those viewport widths/heights, so file height may exceed viewport height. They were visually inspected, not merely generated. The review corrected duplicate well headings, insufficient mobile schematic width, low-contrast secondary text, and alert placement below the initial viewport. The main critical state now has an immediate textual status near run controls and an alert panel above the schematic.
+
+The central tension gauge was checked during normal operation at desktop, tablet, and mobile widths; warning, critical-overpull, and critical-loss-of-load screenshots were reviewed at desktop width. Its label sits outside the needle sweep, its background blends with the measurement panel, and numeric load/thresholds remain readable. Gauge tests cover baseline independence, exact threshold transitions, changed settings, fixed scale, over-range clamping, finite geometry at extreme accepted settings, stale/paused readings, and depth-only degradation. Browser checks verify configured limits reaching the gauge and the critical low-load label.
 
 Real wheel/drag and keyboard inspection are tested. E2E assertions verify preserved depth domains during live arrival, explicit return-to-live, independent X domains, clipped paths, and no page-level horizontal overflow at tablet/mobile sizes. Dense plots have their own horizontal scrolling on narrow screens. Hover never stops replay; selection is an explicit action.
 

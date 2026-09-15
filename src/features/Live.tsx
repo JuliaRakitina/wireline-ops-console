@@ -18,13 +18,13 @@ import {
   Volume2,
   VolumeX,
   Radio,
-  Cable,
   Waves,
 } from 'lucide-react';
 import type { Scenario } from '../domain/types';
 import { consoleStore, type ConsoleSnapshot } from './console-store';
 import { DepthChart } from '../visualization/DepthChart';
 import { WellSchematic } from '../visualization/WellSchematic';
+import { TensionGauge } from '../visualization/TensionGauge';
 import { depthText, depthValue, signed, timeText } from '../ui/format';
 
 const scenarios: { id: Scenario; name: string; description: string }[] = [
@@ -167,52 +167,43 @@ export function Live({ state, onReview }: { state: ConsoleSnapshot; onReview: ()
         </div>
       </div>
       <section className="metrics" aria-label="Live measurements">
-        <div className="metric">
-          <div className="metric-label">
-            <span>Measured Depth</span>
-            <ArrowDown size={16} />
+        <div className="motion-metrics">
+          <div className="metric">
+            <div className="metric-label">
+              <span>Measured Depth</span>
+              <ArrowDown size={16} />
+            </div>
+            <div className="metric-value" data-testid="measured-depth">
+              {depthValue(sample.depth, configuration.depthUnit).toFixed(2)}
+              <small>{configuration.depthUnit}</small>
+            </div>
+            <div className="metric-caption">
+              Raw {depthText(sample.rawDepth, configuration.depthUnit, 2)} <span>·</span> correction{' '}
+              {signed(depthValue(sample.correction, configuration.depthUnit))}
+            </div>
           </div>
-          <div className="metric-value" data-testid="measured-depth">
-            {depthValue(sample.depth, configuration.depthUnit).toFixed(2)}
-            <small>{configuration.depthUnit}</small>
-          </div>
-          <div className="metric-caption">
-            Raw {depthText(sample.rawDepth, configuration.depthUnit, 2)} <span>·</span> correction{' '}
-            {signed(depthValue(sample.correction, configuration.depthUnit))}
+          <div className="metric">
+            <div className="metric-label">
+              <span>Line Speed</span>
+              {sample.direction === 'up' ? <ArrowUp size={16} /> : <ArrowDown size={16} />}
+            </div>
+            <div className="metric-value">
+              {Math.abs(depthValue(sample.speed * 60, configuration.depthUnit)).toFixed(1)}
+              <small>{configuration.depthUnit}/min</small>
+            </div>
+            <div className="metric-caption">
+              {paused
+                ? 'Last received · acquisition paused'
+                : sample.direction === 'up'
+                  ? '↑ Uphole / retrieving'
+                  : sample.direction === 'stationary'
+                    ? 'Stationary'
+                    : '↓ Downhole / lowering'}
+            </div>
           </div>
         </div>
-        <div className="metric">
-          <div className="metric-label">
-            <span>Line Speed</span>
-            {sample.direction === 'up' ? <ArrowUp size={16} /> : <ArrowDown size={16} />}
-          </div>
-          <div className="metric-value">
-            {Math.abs(depthValue(sample.speed * 60, configuration.depthUnit)).toFixed(1)}
-            <small>{configuration.depthUnit}/min</small>
-          </div>
-          <div className="metric-caption">
-            {paused
-              ? 'Last received · acquisition paused'
-              : sample.direction === 'up'
-                ? '↑ Uphole / retrieving'
-                : sample.direction === 'stationary'
-                  ? 'Stationary'
-                  : '↓ Downhole / lowering'}
-          </div>
-        </div>
-        <div className="metric tension">
-          <div className="metric-label">
-            <span>Line Tension</span>
-            <Cable size={16} />
-          </div>
-          <div className="metric-value">
-            {sample.tension.toFixed(2)}
-            <small>kN</small>
-          </div>
-          <div className="metric-caption">
-            Warning {configuration.tensionWarning.toFixed(1)} <span>·</span> Critical{' '}
-            {configuration.tensionCritical.toFixed(1)} kN
-          </div>
+        <div className="tension-instrument">
+          <TensionGauge sample={sample} configuration={configuration} phase={lifecycle.phase} />
         </div>
         <div className="metric differential">
           <div className="metric-label">
@@ -228,6 +219,17 @@ export function Live({ state, onReview }: { state: ConsoleSnapshot; onReview: ()
             <button className="text-button" onClick={consoleStore.baseline}>
               <Crosshair size={12} /> Set baseline
             </button>
+          </div>
+          <div className="differential-reference">
+            <span>Current tension − operator baseline</span>
+            <div className="differential-limits">
+              <span>
+                △ Warning <strong>±{configuration.differentialWarning.toFixed(1)} kN</strong>
+              </span>
+              <span>
+                ▲ Critical <strong>±{configuration.differentialCritical.toFixed(1)} kN</strong>
+              </span>
+            </div>
           </div>
         </div>
       </section>

@@ -27,6 +27,7 @@ test('recruiter journey: live, held history, baseline, critical event, saved rep
   await page.getByRole('button', { name: 'Start run', exact: true }).click();
   await page.clock.runFor(1800);
   await expect(page.getByRole('button', { name: 'Pause', exact: true })).toBeVisible();
+  await expect(page.getByTestId('tension-gauge')).toHaveAttribute('data-severity', 'normal');
   await screenshot(page, 'live-desktop');
   await page.getByRole('button', { name: 'Set baseline' }).click();
   await expect(page.getByText('Differential baseline set', { exact: true })).toBeVisible();
@@ -42,13 +43,16 @@ test('recruiter journey: live, held history, baseline, critical event, saved rep
   await inject(page, 'snag');
   await page.clock.runFor(2600);
   await expect(page.locator('.alert-severity').first()).toContainText('WARNING');
+  await expect(page.getByTestId('tension-gauge')).toHaveAttribute('data-severity', 'warning');
   await screenshot(page, 'warning-desktop');
   await page.clock.runFor(3500);
   await expect(page.locator('.alert-severity').first()).toContainText('CRITICAL');
+  await expect(page.getByTestId('tension-gauge')).toHaveAttribute('data-severity', 'critical');
   await screenshot(page, 'critical-desktop');
   await page.getByRole('button', { name: 'Acknowledge alerts' }).click();
   await expect(page.locator('.alert-severity').first()).toContainText('ACK');
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
+  await expect(page.getByTestId('tension-gauge')).toContainText('Paused · last reading');
   await page.getByRole('button', { name: 'Save run', exact: true }).click();
   await expect(page.getByText('Run saved in this browser', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Run Review', exact: true }).click();
@@ -67,17 +71,22 @@ test('recruiter journey: live, held history, baseline, critical event, saved rep
   expect(errors).toEqual([]);
 });
 
-test('configuration propagates into well, chart annotations, and proximity rules', async ({
+test('configuration propagates into instruments, well, chart annotations, and proximity rules', async ({
   page,
 }) => {
   await openDemo(page);
   await page.getByRole('button', { name: 'Configuration', exact: true }).click();
   await page.getByLabel('Casing Shoe').fill('510');
   await page.getByLabel('Total Depth', { exact: false }).fill('700');
+  await page.getByLabel('Line tension warning').fill('18');
+  await page.getByLabel('Line tension critical').fill('24');
   await page.getByRole('button', { name: 'Apply configuration' }).click();
   await expect(page.getByText('Configuration applied to charts, well, and alerts.')).toBeVisible();
   await screenshot(page, 'configuration-desktop');
   await page.getByRole('button', { name: 'Live Operations', exact: true }).click();
+  await expect(page.locator('.tension-instrument')).toContainText('18.0');
+  await expect(page.locator('.tension-instrument')).toContainText('24.0');
+  await expect(page.getByTestId('tension-gauge')).toHaveAttribute('data-full-scale', '30');
   await expect(page.getByTestId('schematic-shoe')).toHaveText('510 m');
   await expect(page.getByTestId('schematic-td')).toHaveText('700 m');
   await expect(page.locator('.boundary-label')).toContainText('CASING SHOE');
@@ -100,6 +109,9 @@ test('encoder degradation stays visible after magnetic correction; loss is criti
   await page.clock.runFor(1000);
   await expect(page.locator('.alert-list')).toContainText(/loss|load/i);
   await expect(page.locator('.alert-severity').first()).toContainText('CRITICAL');
+  await expect(page.getByTestId('tension-gauge')).toHaveAttribute('data-severity', 'critical');
+  await expect(page.getByTestId('tension-gauge')).toContainText('Critical · loss of load');
+  await screenshot(page, 'loss-desktop');
 });
 
 for (const viewport of [

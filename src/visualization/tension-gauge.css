@@ -1,0 +1,211 @@
+.tension-gauge {
+  min-width: 0;
+  width: 100%;
+  max-width: 310px;
+  margin-inline: auto;
+  color: var(--ink, #203630);
+  background: transparent;
+  font-variant-numeric: tabular-nums;
+  --gauge-needle: #187d79;
+}
+
+.tension-gauge__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  padding: 11px 15px 0;
+}
+
+.tension-gauge__header h2 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+
+.tension-gauge__context {
+  color: #627064;
+  font-size: 9px;
+  line-height: 16px;
+}
+
+.tension-gauge__visual {
+  position: relative;
+  margin-top: -4px;
+  height: 143px;
+}
+
+.tension-gauge__visual svg {
+  display: block;
+  width: 100%;
+  height: 143px;
+  overflow: visible;
+}
+
+.tension-gauge__zone--normal {
+  fill: #dce8df;
+}
+
+.tension-gauge__zone--warning {
+  fill: #ebcc8f;
+}
+
+.tension-gauge__zone--critical {
+  fill: #e4afa4;
+}
+
+.tension-gauge__graduation line {
+  stroke: #a4b1a5;
+  stroke-width: 1;
+}
+
+.tension-gauge__graduation text {
+  fill: #526659;
+  font:
+    10px ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+}
+
+.tension-gauge__threshold {
+  stroke-width: 2;
+}
+
+.tension-gauge__threshold--warning {
+  stroke: #925209;
+}
+
+.tension-gauge__threshold--critical {
+  stroke: #a63329;
+  stroke-width: 2.5;
+}
+
+.tension-gauge__needle {
+  fill: var(--gauge-needle);
+  /* Display each published sample immediately; interpolation can hide a short spike. */
+  transition: none;
+}
+
+.tension-gauge__hub {
+  fill: #fff;
+  stroke: var(--gauge-needle);
+  stroke-width: 2;
+}
+
+.tension-gauge__hub-center {
+  fill: var(--gauge-needle);
+}
+
+.tension-gauge__reading {
+  position: absolute;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 7px;
+  bottom: 0;
+  inset-inline: 0;
+  color: var(--gauge-needle);
+  font:
+    500 28px/1.1 ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+  letter-spacing: -1px;
+}
+
+.tension-gauge__reading small {
+  color: #5c7061;
+  font:
+    11px/1.2 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: 0;
+}
+
+.tension-gauge__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-height: 20px;
+  padding: 4px 12px 0;
+  color: #4e6656;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.tension-gauge__range {
+  margin-left: 3px;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.tension-gauge__limits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  padding: 8px 12px 10px;
+  color: #5b6b5e;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.tension-gauge__limits strong {
+  margin-left: 3px;
+  color: #394f3f;
+  font:
+    500 10px ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    monospace;
+}
+
+.tension-gauge__limits i {
+  display: inline-block;
+  width: 3px;
+  height: 9px;
+  margin-right: 5px;
+  vertical-align: -1px;
+}
+
+.tension-gauge__limit-key--warning {
+  background: #b97b25;
+}
+
+.tension-gauge__limit-key--critical {
+  background: #ad4437;
+}
+
+.tension-gauge--warning {
+  --gauge-needle: #925209;
+}
+
+.tension-gauge--critical {
+  --gauge-needle: #b33c32;
+}
+
+.tension-gauge--unavailable {
+  --gauge-needle: #637066;
+}
+
+.tension-gauge--warning .tension-gauge__status,
+.tension-gauge--critical .tension-gauge__status {
+  color: var(--gauge-needle);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tension-gauge * {
+    animation: none;
+    transition: none;
+  }
+}

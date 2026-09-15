@@ -52,6 +52,10 @@ The raw count is retained. Updating the reference offset is logged as a marker e
 
 This is a transparent educational model: marker locations are known to the simulator. It does not infer an unknown field marker identity, reconstruct missing pulses, estimate cable stretch, or implement a proprietary depth-correction algorithm. A reference can improve the depth estimate at a point while acquisition quality remains degraded.
 
+## Absolute tension instrument
+
+The central needle gauge displays absolute line tension in kN. Its range starts at zero and takes its upper bound from the configured critical limit with display headroom and rounded ticks (20 kN at default settings). Arrival of a new sample never changes the scale. Over-range readings clamp only the needle; the numeric reading and explicit range label remain visible. Warning/critical zones use the same settings and rules as alerts. A sudden tension loss is critical even at a low needle angle. Paused or stale values are labeled as last readings; encoder-only degradation does not imply a failed tension sensor.
+
 ## Differential tension
 
 **Set Baseline** stores the current absolute tension. Every subsequent sample uses:

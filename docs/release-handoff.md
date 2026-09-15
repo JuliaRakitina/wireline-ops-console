@@ -4,7 +4,7 @@ Prepared for Julia's review on 2026-09-16. No remote repository or deployment is
 
 ## Deliverable
 
-Wireline Operations Console is a runnable React/TypeScript/D3 product with deterministic telemetry, six physical scenarios, explicit quality, operator baselines, explainable alerts, independent depth-track scales, held historical viewports, well geometry, prototype survey visualization, recording/replay and CSV/metadata export.
+Wireline Operations Console is a runnable React/TypeScript/D3 product with deterministic telemetry, six physical scenarios, explicit quality, a central absolute-tension needle gauge, operator differential baselines, explainable alerts, independent depth-track scales, held historical viewports, well geometry, prototype survey visualization, recording/replay and CSV/metadata export.
 
 Start after installing dependencies:
 
@@ -21,7 +21,7 @@ The app is at `http://localhost:5173`. Installation: `pnpm install --frozen-lock
 | `pnpm typecheck`                     | PASS — strict TypeScript                                    |
 | `pnpm lint`                          | PASS — zero warnings                                        |
 | `pnpm format:check`                  | PASS                                                        |
-| `pnpm test`                          | PASS — 88 tests across 7 files                              |
+| `pnpm test`                          | PASS — 97 tests across 8 files                              |
 | `pnpm build`                         | PASS — static production bundle                             |
 | `pnpm test:e2e`                      | PASS — 9 Chromium tests, including automated WCAG AA checks |
 | `pnpm scan:safety`                   | PASS — no findings in scanned working-tree content          |
