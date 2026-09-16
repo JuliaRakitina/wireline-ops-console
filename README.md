@@ -4,6 +4,24 @@
 
 React · strict TypeScript · D3 · deterministic telemetry · tested operator workflows
 
+## Real-world provenance
+
+**This is the continuation of a real industrial system, not a fictional portfolio case study.** I am **Julia Rakitina**, and I personally designed, implemented, and field-tested the original wireline acquisition and monitoring system end to end in **2015–2016**. The complete sensor-to-screen chain was tested under **real operating conditions**.
+
+My scope covered physical sensor selection and integration, acquisition firmware, serial transport, Python processing and middleware, WAMP communication, persistence and recording, domain logic, and the AngularJS/D3 operator interface. This included the hardware/software path that turned cable movement, line tension, and magnetic depth markers into live measurements, operator alerts, and recorded runs.
+
+A production descendant later migrated to **LabJack acquisition and modern tablet software**, retained the foundational architecture, and was commercialized in 2026. It **remains operational in 2026**. My authorship claim concerns the original system and its foundational architecture; it does not imply that I wrote every later production rewrite.
+
+> **Historical system: real and field-tested. This repository: a modern synthetic clean-room implementation.** It is not connected to operating equipment and contains no current production source, credentials, customer data, or field recordings. All measurements in this reconstruction are synthetic.
+
+### Contemporary evidence
+
+The 2015 post is a contemporaneous public record of the original development. The later retrospective and behavior map connect that work to this reconstruction.
+
+1. **January 9, 2015 — [D3.js line chart overflows margins](https://stackoverflow.com/questions/27860689/d3-js-line-chart-overflows-margins).** My original Stack Overflow question contains AngularJS/D3 code, multiple dynamically generated X axes, a discussion of independent X/Y zoom behavior and the clipping problem, and a screenshot of the real well-log interface.
+2. **Engineering retrospective — [The Chart That Had to Grow Downward](https://dev.to/julia_rakitina/the-chart-that-had-to-grow-downward-20h3).** My account of the visualization work: downward depth, independent measurement scales, clipping, and preserving an operator's inspected viewport while data arrives.
+3. **[Legacy behavior map](docs/legacy-behavior-map.md).** A component-level mapping from observable behavior in the archived implementation to the modern clean-room reconstruction, with explicit boundaries between source evidence and historical context.
+
 > **Live demo — deployment pending.** Run locally with `pnpm dev` after installing dependencies.
 
 ![Live wireline operations with shared downward depth tracks, independent signal scales, and the well schematic](docs/screenshots/live-desktop.png)
@@ -32,17 +50,15 @@ A downhole instrument moves through a borehole on a cable. A wireline operator n
 
 **Depth grows downward because the tool does.** Tension, differential tension, and speed use different horizontal scales but share the same vertical measured-depth axis. Reversing the cable revisits depths; a snag can change tension without changing depth. Shared depth tracks keep those relationships visible alongside instantaneous instrument readings.
 
-Read mine account: [The chart that had to grow downward](https://dev.to/julia_rakitina/the-chart-that-had-to-grow-downward-20h3).
+Read my account: [The chart that had to grow downward](https://dev.to/julia_rakitina/the-chart-that-had-to-grow-downward-20h3).
 
 ## From sensor to operator screen
 
-Modern clean-room reimplementation of a wireline acquisition and monitoring system originally designed, implemented, and field-tested by **Julia Rakitina in 2015–2016**. The foundational architecture later evolved to LabJack-based acquisition and modern tablet software and was commercialized in 2026.
-
-Mine foundational work covered sensor and acquisition hardware selection, encoder-derived depth and speed, tension measurement, magnetic markers, correction, safety alerts, calibration/settings, recording, review, visualization, and operator-interface localization. The original Arduino acquisition layer missed encoder pulses at high input rates in field tests. That exposed an acquisition bottleneck; the later hardware changed while the operating principles endured.
+My foundational work covered sensor and acquisition hardware selection, encoder-derived depth and speed, tension measurement, magnetic markers, correction, safety alerts, calibration/settings, recording, review, visualization, and operator-interface localization. The original Arduino acquisition layer missed encoder pulses at high input rates in field tests. That exposed an acquisition bottleneck; the later hardware changed while the operating principles endured.
 
 The original operator interface combined a large, configurable line-tension needle gauge with depth-indexed tracks and English, Russian, and Azerbaijani localization, including a saved language preference. The new portfolio interface is English and combines a central tension gauge with depth tracks; the [legacy behavior map](docs/legacy-behavior-map.md) documents these historical capabilities.
 
-This account credits the original system and architecture. It does **not** attribute every subsequent production rewrite to me. The present simulator is not connected to operating equipment. Historical inclinometry work was a visualization/planning prototype; physical instrument integration did not reach the field-complete state of the core depth/tension system.
+Historical inclinometry work was a visualization/planning prototype; physical instrument integration did not reach the field-complete state of the core depth/tension system.
 
 ## What is implemented
 
@@ -134,7 +150,7 @@ This is an **educational portfolio model, not certified field-control software**
 - Survey geometry is synthetic and uses a simple balanced-tangential method, not a survey-grade interpretation package.
 - **LAS export is intentionally omitted.** Repeated depths, stationary load changes, reversals and reference discontinuities require explicit pass selection and resampling before a meaningful depth-indexed LAS 2.0 export. CSV retains the chronology; JSON retains metadata. No misleading LAS file is produced.
 - Chromium is the verified browser. Real hardware/transport, multi-user operation, external deployment, and formal accessibility/safety certification are outside this build.
-- No open-source license has been added. Licensing and hosted deployment require mine approval.
+- No open-source license has been added. Licensing and hosted deployment require my approval.
 
 ## Further reading
 
