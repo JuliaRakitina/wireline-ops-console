@@ -98,7 +98,7 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open [localhost:5173](http://localhost:5173). No environment file, credentials, account, or external service is required. The dev server binds to loopback. Build output uses relative asset URLs for a future approved static deployment.
+Open [127.0.0.1:5173](http://127.0.0.1:5173) and keep the development server running while using the local demo. No environment file, credentials, account, or external service is required. The dev server binds to IPv4 loopback and requires port 5173, so it cannot silently move to another port. Build output uses relative asset URLs for a future approved static deployment.
 
 ## Verify
 

@@ -12,7 +12,7 @@ Start after installing dependencies:
 pnpm dev
 ```
 
-The app is at `http://localhost:5173`. Installation: `pnpm install --frozen-lockfile`.
+The app is at `http://127.0.0.1:5173`. Keep the development server running while using the local demo. Installation: `pnpm install --frozen-lockfile`.
 
 ## Verification
 
