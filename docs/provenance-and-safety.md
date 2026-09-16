@@ -24,6 +24,6 @@ This is educational portfolio software. Its thresholds, scenario physics, and co
 
 ## Release boundary
 
-Publication requires Julia's review. No deployment, remote push, customer information, or production integration is needed for this local build. No open-source license is granted by this repository; adding a license requires Julia's explicit approval.
+Julia reviewed the portfolio product and approved publication in her personal GitHub account. Hosted deployment remains a separate decision. No open-source license is granted by this repository; adding a license requires Julia's explicit approval. Customer information and production integration are outside this project's scope.
 
 Before any release, scan both the working tree and the intended Git history for secrets, private-key markers, credentials, personal/machine paths, database files, archives, raw legacy code, field datasets, and unintended names. Julia's public attribution is intentional. Use counts and file paths for audit findings; never place secret values in scan reports or logs. Review the actual tracked file list, screenshots, exported fixtures, and dependency metadata as well as source files.

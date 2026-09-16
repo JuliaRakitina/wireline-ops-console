@@ -2,7 +2,7 @@
 
 ## Source of truth
 
-Status: Active. Refreshed: 2026-09-16. Surfaces: Live Operations, Run Review, Well Profile, Configuration. Evidence: Julia's supplied product brief and original-system account; the legacy behavior map records archive findings. This is a new repository with no inherited UI assets. All visual choices below are autonomous defaults.
+Status: Active. Refreshed: 2026-09-16. Surfaces: Live Operations, Run Review, Well Profile, Configuration. Evidence: Julia's product brief and original-system account; the legacy behavior map records archive findings. This is a new repository with no inherited UI assets. The decisions below guide the implemented product.
 
 ## Brand
 

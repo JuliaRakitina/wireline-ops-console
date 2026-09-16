@@ -1,6 +1,6 @@
-# Local review handoff
+# Release notes
 
-Prepared for Julia's review on 2026-09-16. No remote repository or deployment is configured. No open-source license has been added.
+Julia reviewed the product and approved publishing `JuliaRakitina/wireline-ops-console` in her personal GitHub account. Hosted deployment is pending. No open-source license has been added.
 
 ## Deliverable
 
@@ -27,7 +27,7 @@ The app is at `http://127.0.0.1:5173`. Keep the development server running while
 | `pnpm scan:safety`                   | PASS — no findings in scanned working-tree content          |
 | `node scripts/benchmark-browser.mjs` | PASS — 60.3-second real-time browser run, no page errors    |
 
-The suite verifies 45 simulated minutes of the actual source/store integration, 12,000 retained samples and bounded events. This differs from the one-minute browser soak. See [performance evidence](performance.md) for exact measurements and [provenance](provenance-and-safety.md) for scan scope and limits. The GitHub workflow is prepared; it has not run on GitHub because nothing has been pushed.
+The suite verifies 45 simulated minutes of the actual source/store integration, 12,000 retained samples and bounded events. This differs from the one-minute browser soak. See [performance evidence](performance.md) for exact measurements and [provenance](provenance-and-safety.md) for scan scope and limits. The verification workflow runs on pushes and pull requests; its current status is available in the repository's Actions tab.
 
 ## Review these artifacts
 
@@ -42,7 +42,7 @@ The suite verifies 45 simulated minutes of the actual source/store integration, 
 
 All physics and data are synthetic; this is not certified equipment-control software. Retention is approximately 40 minutes at 5 Hz, one browser snapshot, 500 events and 64 configuration revisions. Very frequent settings edits can shorten the sample window. No physical inclinometer integration or production transport is claimed. LAS export is omitted until pass selection/resampling semantics are deliberately implemented. Chromium was tested; broad device/browser certification is not claimed.
 
-## Proposed repository metadata
+## Repository metadata
 
 **Name:** `wireline-ops-console`
 
@@ -50,12 +50,10 @@ All physics and data are synthetic; this is not certified equipment-control soft
 
 **Topics:** `react`, `typescript`, `d3`, `real-time`, `data-visualization`, `telemetry`, `industrial-ui`, `simulation`, `vitest`, `playwright`, `portfolio`, `wireline`.
 
-## Exact remaining release steps
+## Remaining release decisions
 
-1. Julia reviews the running product, authorship wording and screenshots. Any requested edits receive the same local checks.
-2. Julia decides whether to publish and whether to grant a license. No license is assumed.
-3. With explicit approval, create the GitHub repository, add its remote, and push the reviewed local commit. Enable the prepared verification workflow and inspect its first run.
-4. With separate deployment approval, choose the static host, configure its deployment, verify the deployed app, and replace the README's live-demo placeholder.
-5. Set the description/topics above and pin the repository after those checks.
+1. Julia decides whether to grant a license. No license is assumed.
+2. With deployment approval, choose the static host, configure its deployment, verify the deployed app, and replace the README's live-demo placeholder.
+3. Pin the repository to the personal profile when its presentation is ready.
 
-No account, production key, real dataset or customer information is required for any of these steps.
+No production key, real dataset or customer information is required for these steps.

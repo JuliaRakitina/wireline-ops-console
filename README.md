@@ -4,7 +4,7 @@
 
 React · strict TypeScript · D3 · deterministic telemetry · tested operator workflows
 
-> **Live demo — awaiting Julia's publication approval.** Nothing is deployed. Run locally with `pnpm dev` after installing dependencies.
+> **Live demo — deployment pending.** Run locally with `pnpm dev` after installing dependencies.
 
 ![Live wireline operations with shared downward depth tracks, independent signal scales, and the well schematic](docs/screenshots/live-desktop.png)
 
@@ -134,7 +134,7 @@ This is an **educational portfolio model, not certified field-control software**
 - Survey geometry is synthetic and uses a simple balanced-tangential method, not a survey-grade interpretation package.
 - **LAS export is intentionally omitted.** Repeated depths, stationary load changes, reversals and reference discontinuities require explicit pass selection and resampling before a meaningful depth-indexed LAS 2.0 export. CSV retains the chronology; JSON retains metadata. No misleading LAS file is produced.
 - Chromium is the verified browser. Real hardware/transport, multi-user operation, external deployment, and formal accessibility/safety certification are outside this build.
-- No open-source license has been added. Publication and licensing require Julia's approval.
+- No open-source license has been added. Licensing and hosted deployment require Julia's approval.
 
 ## Further reading
 
