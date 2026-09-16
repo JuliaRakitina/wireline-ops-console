@@ -6,7 +6,7 @@ React · strict TypeScript · D3 · deterministic telemetry · tested operator w
 
 ## Real-world provenance
 
-**This is the continuation of a real industrial system, not a fictional portfolio case study.** I am **Julia Rakitina**, and I personally designed, implemented, and field-tested the original wireline acquisition and monitoring system end to end in **2015–2016**. The complete sensor-to-screen chain was tested under **real operating conditions**.
+**This modern clean-room reconstruction continues a real industrial system; it is not a fictional portfolio case study.** I am **Julia Rakitina**, and I personally designed, implemented, and field-tested the original wireline acquisition and monitoring system end to end in **2015–2016**. The complete sensor-to-screen chain was tested under **real operating conditions**.
 
 My scope covered physical sensor selection and integration, acquisition firmware, serial transport, Python processing and middleware, WAMP communication, persistence and recording, domain logic, and the AngularJS/D3 operator interface. This included the hardware/software path that turned cable movement, line tension, and magnetic depth markers into live measurements, operator alerts, and recorded runs.
 
@@ -22,7 +22,7 @@ The 2015 post is a contemporaneous public record of the original development. Th
 2. **Engineering retrospective — [The Chart That Had to Grow Downward](https://dev.to/julia_rakitina/the-chart-that-had-to-grow-downward-20h3).** My account of the visualization work: downward depth, independent measurement scales, clipping, and preserving an operator's inspected viewport while data arrives.
 3. **[Legacy behavior map](docs/legacy-behavior-map.md).** A component-level mapping from observable behavior in the archived implementation to the modern clean-room reconstruction, with explicit boundaries between source evidence and historical context.
 
-> **Live demo — deployment pending.** Run locally with `pnpm dev` after installing dependencies.
+> **[Open the live demo](https://juliarakitina.github.io/wireline-ops-console/)** — no account or installation required.
 
 ![Live wireline operations with shared downward depth tracks, independent signal scales, and the well schematic](docs/screenshots/live-desktop.png)
 
@@ -114,7 +114,7 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open [127.0.0.1:5173](http://127.0.0.1:5173) and keep the development server running while using the local demo. No environment file, credentials, account, or external service is required. The dev server binds to IPv4 loopback and requires port 5173, so it cannot silently move to another port. Build output uses relative asset URLs for a future approved static deployment.
+Open [127.0.0.1:5173](http://127.0.0.1:5173) and keep the development server running while using the local demo. No environment file, credentials, account, or external service is required. The dev server binds to IPv4 loopback and requires port 5173, so it cannot silently move to another port. Build output uses relative asset URLs for the public GitHub Pages deployment.
 
 ## Verify
 
@@ -129,7 +129,7 @@ pnpm test:e2e
 pnpm scan:safety
 ```
 
-CI runs the same checks, including browser tests. It contains **no deployment job**. E2E tests cover the recruiter path, viewport retention during acquisition, real wheel/drag behavior, configuration propagation, degraded acquisition, saved-run reload, exports, desktop/tablet/mobile layout, and automated WCAG AA checks on the four primary screens. Tests generate the real screenshots in `docs/screenshots`.
+CI runs the same checks, including browser tests. A separate least-privilege workflow publishes the verified static build to GitHub Pages. E2E tests cover the recruiter path, viewport retention during acquisition, real wheel/drag behavior, configuration propagation, degraded acquisition, saved-run reload, exports, desktop/tablet/mobile layout, and automated WCAG AA checks on the four primary screens. Tests generate the real screenshots in `docs/screenshots`.
 
 For the repeatable 60-second browser measurement, start `pnpm dev` in one terminal and run:
 
@@ -150,7 +150,7 @@ This is an **educational portfolio model, not certified field-control software**
 - Survey geometry is synthetic and uses a simple balanced-tangential method, not a survey-grade interpretation package.
 - **LAS export is intentionally omitted.** Repeated depths, stationary load changes, reversals and reference discontinuities require explicit pass selection and resampling before a meaningful depth-indexed LAS 2.0 export. CSV retains the chronology; JSON retains metadata. No misleading LAS file is produced.
 - Chromium is the verified browser. Real hardware/transport, multi-user operation, external deployment, and formal accessibility/safety certification are outside this build.
-- No open-source license has been added. Licensing and hosted deployment require my approval.
+- No open-source license has been added. Public hosting does not grant permission to copy, modify, or redistribute the source.
 
 ## Further reading
 
