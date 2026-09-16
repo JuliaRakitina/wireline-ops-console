@@ -1,5 +1,8 @@
 # Wireline Operations Console
 
+[![Verify](https://github.com/JuliaRakitina/wireline-ops-console/actions/workflows/verify.yml/badge.svg?branch=main)](https://github.com/JuliaRakitina/wireline-ops-console/actions/workflows/verify.yml)
+[![Deploy GitHub Pages](https://github.com/JuliaRakitina/wireline-ops-console/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/JuliaRakitina/wireline-ops-console/actions/workflows/pages.yml)
+
 **A real-time wireline monitoring workspace where cable depth, load, and measurement confidence stay connected.**
 
 React · strict TypeScript · D3 · deterministic telemetry · tested operator workflows
