@@ -32,17 +32,17 @@ A downhole instrument moves through a borehole on a cable. A wireline operator n
 
 **Depth grows downward because the tool does.** Tension, differential tension, and speed use different horizontal scales but share the same vertical measured-depth axis. Reversing the cable revisits depths; a snag can change tension without changing depth. Shared depth tracks keep those relationships visible alongside instantaneous instrument readings.
 
-Read Julia's account: [The chart that had to grow downward](https://dev.to/julia_rakitina/the-chart-that-had-to-grow-downward-20h3).
+Read mine account: [The chart that had to grow downward](https://dev.to/julia_rakitina/the-chart-that-had-to-grow-downward-20h3).
 
 ## From sensor to operator screen
 
 Modern clean-room reimplementation of a wireline acquisition and monitoring system originally designed, implemented, and field-tested by **Julia Rakitina in 2015–2016**. The foundational architecture later evolved to LabJack-based acquisition and modern tablet software and was commercialized in 2026.
 
-Julia's foundational work covered sensor and acquisition hardware selection, encoder-derived depth and speed, tension measurement, magnetic markers, correction, safety alerts, calibration/settings, recording, review, visualization, and operator-interface localization. The original Arduino acquisition layer missed encoder pulses at high input rates in field tests. That exposed an acquisition bottleneck; the later hardware changed while the operating principles endured.
+Mine foundational work covered sensor and acquisition hardware selection, encoder-derived depth and speed, tension measurement, magnetic markers, correction, safety alerts, calibration/settings, recording, review, visualization, and operator-interface localization. The original Arduino acquisition layer missed encoder pulses at high input rates in field tests. That exposed an acquisition bottleneck; the later hardware changed while the operating principles endured.
 
 The original operator interface combined a large, configurable line-tension needle gauge with depth-indexed tracks and English, Russian, and Azerbaijani localization, including a saved language preference. The new portfolio interface is English and combines a central tension gauge with depth tracks; the [legacy behavior map](docs/legacy-behavior-map.md) documents these historical capabilities.
 
-This account credits the original system and architecture. It does **not** attribute every subsequent production rewrite to Julia. The present simulator is not connected to operating equipment. Historical inclinometry work was a visualization/planning prototype; physical instrument integration did not reach the field-complete state of the core depth/tension system.
+This account credits the original system and architecture. It does **not** attribute every subsequent production rewrite to me. The present simulator is not connected to operating equipment. Historical inclinometry work was a visualization/planning prototype; physical instrument integration did not reach the field-complete state of the core depth/tension system.
 
 ## What is implemented
 
@@ -134,7 +134,7 @@ This is an **educational portfolio model, not certified field-control software**
 - Survey geometry is synthetic and uses a simple balanced-tangential method, not a survey-grade interpretation package.
 - **LAS export is intentionally omitted.** Repeated depths, stationary load changes, reversals and reference discontinuities require explicit pass selection and resampling before a meaningful depth-indexed LAS 2.0 export. CSV retains the chronology; JSON retains metadata. No misleading LAS file is produced.
 - Chromium is the verified browser. Real hardware/transport, multi-user operation, external deployment, and formal accessibility/safety certification are outside this build.
-- No open-source license has been added. Licensing and hosted deployment require Julia's approval.
+- No open-source license has been added. Licensing and hosted deployment require mine approval.
 
 ## Further reading
 
